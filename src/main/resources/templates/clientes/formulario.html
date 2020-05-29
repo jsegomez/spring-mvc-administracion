@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+    <body class="sb-nav-fixed">
+        <nav th:replace="layout/layout :: navbar"></nav>
+        <div id="layoutSidenav">
+            <div th:replace="layout/layout :: sidenav"></div>
+            <div id="layoutSidenav_content">
+                <!-- Contenido principal de la página -->
+                <main class="margenes-main animate__animated animate__fadeIn">
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-12 col-md-10 col-xl-8">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white">
+                                    <h4 th:text="${titulo}" class="text-center"></h4>
+                                </div>
+                                <div class="card-body">
+                                    <form   class="formulario"
+                                            autocomplete="off"
+                                            th:action="@{/registrar}"
+                                            method="POST"
+                                            th:object="${cliente}"
+                                            enctype="multipart/form-data"
+                                    >
+                                        <div class="form-group row" th:if="${cliente.id}">
+                                            <label for="idCliente" class="col-sm-2 col-form-label">Id</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="idCliente" th:field="*{id}" readonly> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorClass="'form-control alert-danger'">
+                                                <small class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:errorClass="'form-control alert-danger'">
+                                                <small class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="correo" class="col-sm-2 col-form-label">Correo</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="correo" th:field="*{email}" th:errorClass="'form-control alert-danger'">
+                                                <small class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                                            <div class="col-12 col-sm-6">
+                                                <input type="date" class="form-control" id="fecha" th:field="*{createAt}" th:errorClass="'form-control alert-danger'">
+                                                <small class="text-danger" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="correo" class="col-sm-2 col-form-label">Foto</label>
+                                            <div class="col-12 col-sm-6">
+                                                <div class="input-group">     
+                                                    <div class="custom-file">
+                                                      <input type="file" class="custom-file-input" id="imagen" name="imagen-cliente">
+                                                      <label class="custom-file-label" for="imagen">Seleccionar archivo</label>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                <button type="submit" class="btn btn-dark" th:if="${cliente.id == null}">
+                                                    Registrar
+                                                </button>
+
+                                                <button type="submit" class="btn btn-dark" th:if="${cliente.id}">
+                                                  Actualizar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer th:replace="layout/layout :: footer"></footer>
+            </div>
+        </div>
+        <div th:replace="layout/layout :: scripts"></div>
+        <script>
+            $(document).ready(function () {
+                bsCustomFileInput.init();
+            });
+        </script>
+    </body>
+</html>

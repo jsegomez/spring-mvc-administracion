@@ -1,0 +1,73 @@
+@media (min-width: 350px){
+    .margenes-main{
+        margin: 5px 5px;
+    }
+    .formulario{
+        margin: 10px 10px;
+    }
+}
+
+@media (min-width: 600px){
+    .margenes-main{
+        margin: 15px 15px;
+    }
+    .formulario{
+        margin: 20px 20px;
+    }
+}
+
+@media (min-width: 800px){
+    .margenes-main{
+        margin: 20px 20px;
+    }
+    .formulario{
+        margin: 20px 40px;
+    }
+}
+
+@media (min-width: 1024px){
+    .margenes-main{
+        margin: 20px 40px;
+    }
+    .formulario{
+        margin: 10px 60px;
+    }
+}
+
+@media (min-width: 1200px){
+    .margenes-main{
+        margin: 20px 80px;
+    }
+    .formulario{
+        margin: 10px 10px;
+    }
+}
+
+@media (min-width: 1600px){
+    .margenes-main{
+        margin: 20px 120px;
+    }
+    .formulario{
+        margin: 10px 130px;
+    }
+}
+
+@media (min-width: 1800px){
+    .margenes-main{
+        margin: 20px 150px;
+    }
+    .formulario{
+        margin: 10px 190px;
+    }
+}
+
+
+.list-group-item-action.active{
+    background: #353B41 !important;
+    border: #353B41 !important;
+    color: white !important;
+}
+
+.eliminarCliente{
+    cursor: pointer;
+}

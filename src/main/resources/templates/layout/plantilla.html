@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="sb-nav-fixed">
+        
+    <nav th:replace="layout/layout :: navbar"></nav>        
+
+    <div id="layoutSidenav">    
+        <div th:replace="layout/layout :: sidenav"></div>
+
+        <div id="layoutSidenav_content">
+
+            <!-- Contenido principal de la página -->
+            <main>
+                <div class="container-fluid">                    
+                    
+                </div>
+            </main>
+
+            <footer th:replace="layout/layout :: footer"></footer>
+        </div>
+        
+    </div>
+    <div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>

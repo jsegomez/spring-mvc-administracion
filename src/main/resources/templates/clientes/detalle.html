@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="sb-nav-fixed">
+        
+    <nav th:replace="layout/layout :: navbar"></nav>        
+
+    <div id="layoutSidenav">    
+        <div th:replace="layout/layout :: sidenav"></div>
+
+        <div id="layoutSidenav_content">
+
+            <!-- Contenido principal de la página -->
+            <main>
+                <div class="container animate__animated animate__fadeIn">
+
+                  <!-- Estructura para mensajes Flash  -->
+
+                  <div th:if="${success != null}" th:attr="data-mensaje=${success}" class="mensaje-success"></div>
+
+                  <!-- Fin de estructura mensajes Flash  -->
+
+                    <div class="card mt-2 mt-md-5">
+                        <div class="card-header p-3 text-white bg-dark">
+                          <h4 th:text="${'Detalle: '} + ${cliente.nombre} + ${' '} + ${cliente.apellido}"></h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-center align-items-center px-4 mb-4">
+
+                                <div class="col-12 col-md-6" align="center" th:if="${(cliente.foto != null ) && #strings.length(cliente.foto) == 0 }">
+                                    <img src="/images/usuario.png" width="300px">
+                                </div>
+
+                                <div class="col-12 col-md-6" align="center" th:if="${#strings.length(cliente.foto) > 0 }">
+                                  <img th:src="@{'/imagenes/' + ${cliente.foto}}" width="200px">
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <table class="table">            
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">Id</th>
+                                            <td th:text="${cliente.id}"></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Nombre</th>
+                                            <td th:text="${cliente.nombre}"></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Apellido</th>
+                                            <td th:text="${cliente.apellido}"></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Email</th>
+                                            <td th:text="${cliente.email}"></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Fecha</th>
+                                            <td th:text="${cliente.createAt}"></td>
+                                          </tr>
+
+                                        </tbody>
+                                      </table>  
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-12 col-lg-3 mb-2 mb-md-0">
+                                  <a th:href="@{/clientes}" class="btn btn-dark btn-block">Regresar</a>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                  <a th:href="@{/editar/} + ${cliente.id}" class="btn btn-outline-danger btn-block">Editar</a>    
+                                </div>
+                            </div>
+                        </div>
+                      </div>               
+                    
+                </div>
+            </main>
+
+            <footer th:replace="layout/layout :: footer"></footer>
+        </div>
+        
+    </div>
+    <div th:replace="layout/layout :: scripts"></div>
+</body>
+
+</html>
